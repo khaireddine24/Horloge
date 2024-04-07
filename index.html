@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="clock.css">
+    <link rel="icon" href="horloge.jpg">
+    <title>Clock</title>
+</head>
+<body>
+    <div class="cl">
+        <div class="hand h" data-h-hand></div>
+        <div class="hand m" data-m-hand></div>
+        <div class="hand s" data-s-hand></div>
+        <div class="number number1">1</div>
+        <div class="number number2">2</div>
+        <div class="number number3">3</div>
+        <div class="number number4">4</div>
+        <div class="number number5">5</div>
+        <div class="number number6">6</div>
+        <div class="number number7">7</div>
+        <div class="number number8">8</div>
+        <div class="number number9">9</div>
+        <div class="number number10">10</div>
+        <div class="number number11">11</div>
+        <div class="number number12">12</div>
+    </div>
+    <footer>
+        Counter clock : <span id="da"></span>
+    </footer>
+    <script>
+        const h=document.querySelector('[data-h-hand]');
+        const m=document.querySelector('[data-m-hand]');
+        const s=document.querySelector('[data-s-hand]');
+        cl=()=>{
+            const da=new Date();
+            const sec=da.getSeconds()/60;
+            const min=(sec+da.getMinutes())/60;
+            const ho=(min+da.getHours())/12;
+            rot(s,sec);
+            rot(m,min);
+            rot(h,ho);
+
+        }
+        rot=(ele,r)=>{
+            ele.style.setProperty('--rotation',r*360);
+        }
+        setInterval(cl,1000);
+        document.getElementById('da').innerHTML=new Date().getHours()+" "+new Date().getMinutes()+" "+(new Date().getSeconds())
+    </script>
+</body>
+</html>
